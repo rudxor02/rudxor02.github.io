@@ -30,6 +30,7 @@ liveload: true
 
 # Build settings
 theme: minima
+# theme: notion-jekyll-theme
 plugins:
   - jekyll-feed
 # Exclude from processing.
