@@ -1,0 +1,17 @@
+---
+layout: post
+type: tags
+title: "sample"
+date: 2023-03-27 23:30:55 +0900
+comments: true
+toc: true
+tags: notion test
+---
+
+{% include h2.html content="first" %}
+test
+`ㅁㄴㅇㄴ`
+{% include h2.html content="second" %}
+
+![aa](/assets/images/post/20230328214725.png)
+![](/assets/images/post/2023-03-28-sample-20230328215609.png)

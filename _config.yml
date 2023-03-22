@@ -19,11 +19,11 @@
 # in the templates via {{ site.myvariable }}.
 
 title: rudxor02
-email: rudxor07@naver.com
+# email: rudxor07@naver.com
 description: >- # this means to ignore newlines until "baseurl:"
   developer
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://rudxor02.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: rudxor02
 port: 3000
 liveload: true
@@ -32,11 +32,22 @@ liveload: true
 plugins:
   # - jekyll-theme-hamilton
   - jekyll-feed
-  # - jekyll-remote-theme
-theme: jekyll-theme-hamilton
-disqus: rudxor02-github-io.disqus.com
+  - jekyll-remote-theme
+  - jekyll-sitemap
+  - jekyll-paginate
+# theme: jekyll-theme-hamilton
+# disqus: rudxor02-github-io
 google_analytics: G-Q4PQJXGQB8
-# remote_theme: ngzhio/jekyll-theme-hamilton
+remote_theme: ngzhio/jekyll-theme-hamilton
+author: rudxor02
+avatar: /assets/images/dev-jeans-hood.png
+email: rudxor07@naver.com
+location: Seoul
+skin: sunset
+lang: en
+# paginate: 5
+subscribe: false
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to

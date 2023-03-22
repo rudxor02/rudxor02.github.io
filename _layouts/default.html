@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+  <head>
+    
+    {% include head.html %}
+  </head>
+
+  <body>
+    <div class="site-container">
+      <header class="site-header">
+        {% include header.html %}
+      </header>
+      <div class="site-body wrapper">
+        <aside class="site-sidebar" id="site-sidebar">
+            {% include sidebar.html %}
+        </aside>
+        <main class="site-main" id="site-main" aria-label="Content" tabindex="1">
+          {{ content }}
+          {% if page.layout == 'post' %}
+            <script src="https://giscus.app/client.js"
+                    data-repo="rudxor02/rudxor02.github.io"
+                    data-repo-id="R_kgDOJJ8nKA"
+                    data-category="comments"
+                    data-category-id="DIC_kwDOJJ8nKM4CVY85"
+                    data-mapping="title"
+                    data-strict="1"
+                    data-reactions-enabled="1"
+                    data-emit-metadata="0"
+                    data-input-position="top"
+                    data-theme="https://rudxor02.github.io/assets/css/comment.css"
+                    data-lang="en"
+                    crossorigin="anonymous"
+                    async>
+            </script>
+          {% endif %}
+          <footer class="site-footer">
+            {% include footer.html %}
+          </footer>
+        </main>
+        <aside class="site-sidebar-right">
+          {% if page.toc %}
+            {% include sidebar-toc.html %}
+          {% endif %}
+        </aside>
+      </div>
+    </div>
+  </body>
+
+</html>
