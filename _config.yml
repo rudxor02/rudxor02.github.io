@@ -23,7 +23,7 @@ email: rudxor07@naver.com
 description: >- # this means to ignore newlines until "baseurl:"
   developer
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://rudxor02.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: rudxor02
 port: 3000
 liveload: true
