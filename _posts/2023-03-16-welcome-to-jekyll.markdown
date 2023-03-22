@@ -1,45 +1,42 @@
 ---
-layout: archive-years
+layout: post
 type: tags
 title: "Welcome to Jekyll!"
 date: 2023-03-16 23:30:55 +0900
-categories: jekyll update
+# categories: jekyll update
 comments: true
-tags: abc abd
+# tags: abc abd
 toc: true
 ---
 
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuilaaad the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
-Jekyll requires blog post files to be named according to the following format:
 
-`YEAR-MONTH-DAY-title.MARKUP`
+{%include h2.html content="asd"%}
 
-Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit numbers, and `MARKUP` is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+{%include h2.html content="asdff2"%}
 
-Jekyll also offers powerful support for code snippets:
+{%include h2.html content="asdff3"%}
 
-{% for tag in site.tags %}
-  <h3>{{ tag[0] }}asd</h3>
-  <ul>
-    {% for post in tag[1] %}
-      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-    {% endfor %}
-  </ul>
-{% endfor %}
+{%include h3.html content="asdff7"%}
+asdasd
+asdasd
+asdasd
+as
+d
+asd
 
-{% highlight ruby %}
-def print_hi(name)
-puts "Hi, #{name}"
-end
-print_hi('Tom')
+as
+d
+asd
+{%include h2.html content="asdff4"%}
 
-# => prints 'Hi, Tom' to STDOUT
+asd
+a
+s
+d
+as
+d
+as
+d
 
-{% endhighlight %}
-
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
-
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]: https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+{%include h2.html content="asdff5"%}
