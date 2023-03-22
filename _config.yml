@@ -33,6 +33,8 @@ plugins:
   # - jekyll-theme-hamilton
   - jekyll-feed
   - jekyll-remote-theme
+  - jekyll-sitemap
+  - jekyll-paginate
 # theme: jekyll-theme-hamilton
 disqus: rudxor02-github-io.disqus.com
 google_analytics: G-Q4PQJXGQB8
