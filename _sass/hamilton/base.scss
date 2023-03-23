@@ -6,6 +6,10 @@ html {
   }
 }
 
+*, html {
+  scroll-behavior: smooth;
+}
+
 /**
  * Reset some basic elements
  */
@@ -60,7 +64,10 @@ hr {
  */
 img {
   max-width: 100%;
-  vertical-align: middle;
+  // vertical-align: middle;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /**

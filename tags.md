@@ -4,7 +4,3 @@ type: tags
 title: Tags
 permalink: /tags/
 ---
-
-aws
-ec2
-docker
