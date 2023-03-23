@@ -197,11 +197,16 @@ ul.task-list {
  * Wrapper
  */
 .wrapper {
-  max-width: calc(#{$content-width} - (#{$spacing-unit}));
+  // width: 1500px;
+  // max-width: calc(#{$content-width} - (#{$spacing-unit}));
   margin-right: auto;
   margin-left: auto;
   padding-right: $spacing-unit / 2;
   padding-left: $spacing-unit / 2;
+
+  @media (hover: hover) and (pointer: fine) {
+    width: 1500px;
+  }
 
   @media screen and (min-width: $on-large) {
     max-width: calc(#{$content-width} - (#{$spacing-unit} * 2));

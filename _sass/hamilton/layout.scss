@@ -180,9 +180,15 @@
  * Site body
  */
 .site-body {
+  // display: flex;
   display: grid;
   grid-template-columns: calc(#{$content-width} * 0.24) 1fr;
+  // grid-template-columns: calc(#{$content-width} * 0.40) 1fr;
   overflow: hidden;
+
+  @media (hover: hover) and (pointer: fine) {
+    display: flex;
+  }
 
   @include media-query($on-medium) {
     grid-template-columns: calc(#{$content-width} * 0.18) 1fr;
@@ -199,6 +205,36 @@
 .site-sidebar {
   padding: $spacing-unit;
   border-right: 1px solid;
+
+  @media (hover: hover) and (pointer: fine) {
+    flex:1
+  }
+
+  @include relative-font-size(0.8);
+
+  @include media-query($on-medium) {
+    padding: $spacing-unit / 2;
+    @include relative-font-size(0.6);
+  }
+
+  @include media-query($on-small) {
+    display: none;
+    border-right: none;
+    border-bottom: 1px solid;
+  }
+
+  @media screen and (min-width: $on-small) {
+    display: block !important;
+  }
+}
+
+.site-sidebar-right {
+  padding: $spacing-unit;
+
+  @media (hover: hover) and (pointer: fine) {
+    flex:1
+  }
+
   @include relative-font-size(0.8);
 
   @include media-query($on-medium) {
@@ -322,6 +358,7 @@ ul.social-icons {
 .site-main {
   flex: 1 0 auto;
   overflow-y: scroll;
+  border-right: 1px solid;
 
   // Hide scrollbar for IE, Edge and Firefox
   -ms-overflow-style: none;  // IE and Edge
@@ -329,6 +366,10 @@ ul.social-icons {
 
   padding-left: $spacing-unit;
   padding-right: $spacing-unit;
+
+  @media (hover: hover) and (pointer: fine) {
+    flex:3
+  }
 
   @include media-query($on-medium) {
     padding-left: $spacing-unit / 2;
