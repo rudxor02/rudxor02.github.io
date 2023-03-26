@@ -1,23 +1,47 @@
 <!DOCTYPE html>
+
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
 
   <head>
     {% include head.html %}
+    <style type="text/css" media="screen">
+      div > aside{
+       background-color: aqua;
+       overflow-y: scroll;
+      }
+     
+      section {
+       background-color: antiquewhite;
+       overflow-y: scroll;
+       /* margin-top: 100%; */
+      }
+     
+      /* .wrapper {
+       overflow-y: scroll;
+      } */
+     </style>
+     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+     
   </head>
   <body>
     <div class="site-container">
       <header class="site-header">
         {% include header.html %}
       </header>
-      <div style="display: flex;">
-        <aside style="flex:1">
+      
+      <div class="site-body wrapper" style="display: flex;">
+        <aside class="panel" style="flex:1">
             <div style="border-style: solid;">asd</div>
         </aside>
-        <section style="flex:1">
-            <div style="border-style: solid;">asd</div>
+        <section id="scrollTarget" class="panel1"  style="flex:1;">
+              
+            <img src="/dev-jeans-hood.png">
+            <img src="/dev-jeans-hood.png">
         </section>
-        <aside style="flex:1">
-            <div style="border-style: solid;">asd</div>
+        <aside id="scrollSource"  class="panel2"  style="flex:1">
+
+            <img src="/dev-jeans-hood.png">
+          <img src="/dev-jeans-hood.png">
         </aside>
 
 
@@ -27,4 +51,33 @@
       </div>
     </div>
   </body>
+  <script>
+
+        var $target = $("#scrollTarget");
+        // console.log(target.attr('class'))
+        var $source = $("#scrollSource");
+        // console.log(source.attr('class'))
+        $source.scroll(function() {
+          // console.log(target.attr('class'))
+          // console.log(source.attr('class'))
+          $target.scrollTop($source.scrollTop())
+        //   console.log($target.prop("scrollTop"))
+        //  $target.prop("scrollTop", $source.scrollTop())
+        //         .prop("scrollLeft", $source.scrollLeft());
+        //   console.log($source.scrollTop())
+           
+          // console.log(this.attr('class'))
+        });
+        // console.log(1)
+        // console.log(document)
+
+        // $(document).ready(function() {
+        //   console.log(2)
+        //     $(document).scroll(function() {
+        //       console.log(3)
+        //     console.log('Scrolled to ' + $(this).scrollTop());
+        //   })
+        // });
+
+  </script>
 </html>

@@ -188,6 +188,7 @@
 
   @media (hover: hover) and (pointer: fine) {
     display: flex;
+    overflow: scroll;
   }
 
   @include media-query($on-medium) {
@@ -207,7 +208,10 @@
   border-right: 1px solid;
 
   @media (hover: hover) and (pointer: fine) {
-    flex:1
+    // flex:1
+    position:fixed;
+    width: $sidebar-width;
+    height:100%
   }
 
   @include relative-font-size(0.8);
@@ -230,9 +234,13 @@
 
 .site-sidebar-right {
   padding: $spacing-unit;
-
   @media (hover: hover) and (pointer: fine) {
-    flex:1
+    // flex:1
+    position:fixed;
+    right:0px;
+    width: $sidebar-width;
+    height: 100%;
+    border-left: 1px solid;
   }
 
   @include relative-font-size(0.8);
@@ -357,8 +365,8 @@ ul.social-icons {
  */
 .site-main {
   flex: 1 0 auto;
-  overflow-y: scroll;
-  border-right: 1px solid;
+  // overflow-y: scroll;
+  
 
   // Hide scrollbar for IE, Edge and Firefox
   -ms-overflow-style: none;  // IE and Edge
@@ -368,7 +376,10 @@ ul.social-icons {
   padding-right: $spacing-unit;
 
   @media (hover: hover) and (pointer: fine) {
-    flex:3
+    // border-right: 1px solid;
+    flex: none;
+    width: calc(100% - 2 * $sidebar-width - 4 * $spacing-unit);
+    margin: 0 auto;
   }
 
   @include media-query($on-medium) {
