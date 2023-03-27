@@ -1,6 +1,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="view-transition">
 
 {% seo %}
 
@@ -20,7 +21,25 @@
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
 <link rel="stylesheet" href="{{ '/assets/css/skin.css' | relative_url }}">
 
-<!-- Begin selecting skin -->
+
+{% if site.skin%}
+  <script>
+    
+    window.addEventListener("DOMContentLoaded", (event) => {
+      const skinName = localStorage.getItem("skin");
+      if (skinName != null) {
+        changeSkin(skinName);
+      } else {
+        const defaultSkinName = "{{ site.skin }}";
+        changeSkin(defaultSkinName);
+      }
+    });
+
+    
+    
+
+  </script>
+{% endif %}
 {% unless site.skin %}
   <script>
     const hour = (new Date()).getHours();
@@ -41,7 +60,6 @@
     document.getElementsByTagName("head")[0].appendChild(elem);
   </script>
 {% endunless %}
-<!-- End selecting skin -->
 
 <script async src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
 

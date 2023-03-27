@@ -39,6 +39,15 @@
   }
 }
 
+.skin-change-button {
+  padding-left: $spacing-unit;
+  margin-bottom: 0;
+  float: left;
+  // @media screen and (min-width: $on-small) {
+  //   display: none;
+  // }
+}
+
 .site-title {
   @include relative-font-size(1.625);
   font-family: $handwriting-font-family;
@@ -185,6 +194,8 @@
   grid-template-columns: calc(#{$content-width} * 0.24) 1fr;
   // grid-template-columns: calc(#{$content-width} * 0.40) 1fr;
   overflow: hidden;
+  width:calc(100% - 2 * $spacing-unit);
+  // padding:0;
 
   @media (hover: hover) and (pointer: fine) {
     display: flex;
@@ -210,8 +221,10 @@
   @media (hover: hover) and (pointer: fine) {
     // flex:1
     position:fixed;
+    left:0px;
     width: $sidebar-width;
-    height:100%
+    // height:100%;
+    border-right: none;
   }
 
   @include relative-font-size(0.8);
@@ -239,8 +252,8 @@
     position:fixed;
     right:0px;
     width: $sidebar-width;
-    height: 100%;
-    border-left: 1px solid;
+    // height: 100%;
+    border-left: none;
   }
 
   @include relative-font-size(0.8);
@@ -365,7 +378,7 @@ ul.social-icons {
  */
 .site-main {
   flex: 1 0 auto;
-  // overflow-y: scroll;
+  overflow-y: scroll;
   
 
   // Hide scrollbar for IE, Edge and Firefox
@@ -378,8 +391,10 @@ ul.social-icons {
   @media (hover: hover) and (pointer: fine) {
     // border-right: 1px solid;
     flex: none;
+    overflow-y: none;
     width: calc(100% - 2 * $sidebar-width - 4 * $spacing-unit);
     margin: 0 auto;
+    // padding: $spacing-unit;
   }
 
   @include media-query($on-medium) {
