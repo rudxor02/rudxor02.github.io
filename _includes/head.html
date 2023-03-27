@@ -19,25 +19,47 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open%20Sans|Roboto|Roboto%20Slab|Inconsolata|Dancing%20Script|Noto%20Sans%20SC|Noto%20Sans%20TC|Noto%20Serif%20SC|Noto%20Serif%20TC|Ma%20Shan%20Zheng">
 
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-<link rel="stylesheet" href="{{ '/assets/css/skin.css' | relative_url }}">
+<link rel="stylesheet" id="skin" href="{{ '/assets/css/skin.css' | relative_url }}">
 
 
 {% if site.skin%}
   <script>
-    
-    window.addEventListener("DOMContentLoaded", (event) => {
-      const skinName = localStorage.getItem("skin");
-      if (skinName != null) {
-        changeSkin(skinName);
-      } else {
-        const defaultSkinName = "{{ site.skin }}";
-        changeSkin(defaultSkinName);
-      }
-    });
+    // console.log(document.getElementById('skin').href);
+    const skinNameList = ["sunset", "midnight", "daylight"];
+    const defaultSkinName = "{{ site.skin }}";
+    let currentSkinName = localStorage.getItem("skin");
 
+    const changeSkin = (skinName) => {
+        let filename = ''
+        currentSkinName = localStorage.getItem("skin");
+        switch(skinName) {
+            case skinNameList[0]:
+                filename = "{{ '/assets/css/skin-sunset.css' | relative_url }}";
+                break;
+            case skinNameList[1]:
+                filename = "{{ '/assets/css/skin-midnight.css' | relative_url }}";
+                break;
+            case skinNameList[2]:
+                filename = "{{ '/assets/css/skin-daylight.css' | relative_url }}";
+                break;
+            default:
+                changeSkin(skinNameList[(skinNameList.indexOf(currentSkinName || defaultSkinName) + 1) % 3]);
+                return;
+        }
+        const elem = document.createElement("link");
+        elem.setAttribute("rel", "stylesheet");
+        elem.setAttribute("type", "text/css");
+        elem.setAttribute("href", filename);
+        document.getElementsByTagName("head")[0].appendChild(elem);
+        // document.getElementById('skin').href = filename;
+        localStorage.setItem("skin", skinName);
+    }
     
-    
-
+    if (currentSkinName != null) {
+      changeSkin(currentSkinName);
+    } else {
+      changeSkin(defaultSkinName);
+    }
   </script>
 {% endif %}
 {% unless site.skin %}
