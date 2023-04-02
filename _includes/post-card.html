@@ -19,14 +19,14 @@
           </li>
         {%- endfor -%}
       </ul>
-      <a href="#" onclick="backToTop()" class="back-to-top">Top &#8648;</a>
+      <a href="#" class="back-to-top" onclick="backToTop()">Top &#8648;</a>
     {%- endif -%}
   {%- endfor -%}
 {%- endfor -%}
 
 <script>
   function backToTop() {
-    const main = document.getElementById("site-main");
+    const main = document.getElementsByClassName("site-body")[0];
     main.scrollTop = 0;
   }
 </script>

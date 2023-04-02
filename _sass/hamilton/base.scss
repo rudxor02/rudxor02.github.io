@@ -215,3 +215,40 @@ ul.task-list {
     padding-left: $spacing-unit;
   }
 }
+
+
+.gist-meta {
+  background-color:initial !important;
+}
+
+.gist .blob-num {
+  background: none !important;
+}
+
+.gist .highlight {
+  background:none !important;
+}
+
+.gist .gist-data {
+  background:none !important;
+}
+
+.blob-num {
+  color: #58a6ff !important;
+}
+
+.blob-code {
+  color: #58a6ff !important;
+}
+
+.gist {
+  border: 1px;
+}
+
+.gist .gist-file {
+    margin-bottom: 1em;
+    font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+    border: 1px solid #ccc !important;
+    border-bottom: 1px solid #ccc !important;
+    border-radius: 6px;
+}

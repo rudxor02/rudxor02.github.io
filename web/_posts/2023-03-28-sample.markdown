@@ -13,5 +13,7 @@ test
 `ㅁㄴㅇㄴ`
 {% include h2.html content="second" %}
 
+<script src="https://gist.github.com/rudxor02/adf92b09e9d12482fddaadcb5d5ca08e.js"></script>
+
 ![aa](/assets/images/post/20230328214725.png)
 ![](/assets/images/post/2023-03-28-sample-20230328215609.png)
