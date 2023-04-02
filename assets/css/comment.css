@@ -133,6 +133,10 @@ main .gsc-loading-image {
   color: #58a6ff;
 }
 
-div#__next{
+div#__next {
   padding-top: 30px;
+}
+
+.gsc-tl-line {
+  background: none !important;
 }
