@@ -207,7 +207,7 @@
  */
 .site-body {
   // display: flex;
-  display: grid;
+  display: flex;
   grid-template-columns: calc(#{$content-width} * 0.24) 1fr;
   // grid-template-columns: calc(#{$content-width} * 0.40) 1fr;
   overflow: hidden;
@@ -447,13 +447,14 @@ ul.social-icons {
   -ms-overflow-style: none;  // IE and Edge
   scrollbar-width: none;     // Firefox
 
-  padding-left: $spacing-unit;
-  padding-right: $spacing-unit;
+  // padding-left: $spacing-unit;
+  // padding-right: $spacing-unit;
   width: calc(100vw - (4 * #{$spacing-unit}));
 
   @media (hover: hover) and (pointer: fine) {
     // border-right: 1px solid;
     flex: none;
+    
     overflow-y: initial;
     width: calc(100% - (2 * #{$sidebar-width}) - (4 * #{$spacing-unit}));
     margin: 0 auto;
