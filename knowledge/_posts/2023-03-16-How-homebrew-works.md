@@ -5,7 +5,7 @@ title: "How homebrew works?"
 date: 2023-03-16 23:30:55 +0900
 comments: true
 toc: true
-tags: til homebrew
+tags: homebrew software
 ---
 
 _회사 다니면서 mac을 처음 써봐서 homebrew를 설치하다가, 문득 os마다 하나씩은 존재하는 패키지 관리자는 어떻게 동작하는지 궁금했던 게 기억나서 회사에서 동일 주제로 세미나를 했던 걸 정리하고자 한다._
@@ -19,21 +19,21 @@ mac os에서의 주된 패키지(docker, node, yarn, pulumi 같은 것들) 관�
 homebrew는 온라인 저장소(주로 github)에 저장된 패키지를 받아와 로컬에서 binary file로 컴파일해서 사용자가 패키지를 터미널에서 cli로 사용할 수 있게 연결해 주는 역할을 한다.
 
 ```bash
-#brew install pulumi
+$ brew install pulumi
 
-where pulumi
-# output : /opt/homebrew/bin/pulumi
+$ where pulumi
+#/opt/homebrew/bin/pulumi
 
-ls /opt/homebrew/bin
-# output : pulumi, node, yarn, ...
+$ ls /opt/homebrew/bin
+#pulumi, node, yarn, ...
 
-#brew install docker
+$ brew install docker
 
-where docker
-# output : /usr/local/bin
+$ where docker
+#/usr/local/bin
 
-ls /usr/local/bin
-# output : docker, ... (여기에는 homebrew 뿐만 아니라 다른 binary 파일들도 존재)
+$ ls /usr/local/bin
+#docker, ... (여기에는 homebrew 뿐만 아니라 다른 binary 파일들도 존재)
 ```
 
 ## Terminology
@@ -89,7 +89,7 @@ _양조과정에서 모티브를 따온듯 하다._
   - version update도 마찬가지이다. ex) [pulumi : version update to 3.58.0](https://github.com/Homebrew/homebrew-core/pull/125761)
 - 꼭 homebrew-core 레포에 pull request 과정을 거친 공식적인 패키지를 사용 안하더라도 `brew tap` 을 통해서 custom package를 만들고 배포할 수 있다. [여기](https://jldlaughlin.medium.com/how-does-homebrew-work-starring-rust-94ae5aa24552) 블로그에 튜토리얼 느낌으로 잘 나와있음.
 
-## 참고 링크
+## Reference
 
 - [homebrew doc](https://docs.brew.sh/)
 - [ruby formula interface doc](https://rubydoc.brew.sh/Formula.html)
