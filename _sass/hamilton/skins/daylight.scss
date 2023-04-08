@@ -232,3 +232,11 @@ $subscribe-color:       #b21000 !default;
 .highlight {
   background-color: #f8f8f8;
 }
+
+.highlight, .highlight .w {
+  color: #282828;
+}
+
+.highlight .p, .highlight .pi {
+  color: #282828;
+}
