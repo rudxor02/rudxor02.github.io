@@ -1,7 +1,7 @@
 ---
 layout: post
 type: tags
-title: "How pulumi works?"
+title: "How pulumi works"
 date: 2023-03-23 23:30:55 +0900
 comments: true
 toc: true
