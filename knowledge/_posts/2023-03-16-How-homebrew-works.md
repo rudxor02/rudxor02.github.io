@@ -1,11 +1,11 @@
 ---
 layout: post
 type: tags
-title: "How homebrew works"
+title: "[Homebrew] How Homebrew Works"
 date: 2023-03-16 23:30:55 +0900
 comments: true
 toc: true
-tags: homebrew software
+tags: homebrew
 ---
 
 _회사 다니면서 mac을 처음 써봐서 homebrew를 설치하다가, 문득 os마다 하나씩은 존재하는 패키지 관리자는 어떻게 동작하는지 궁금했던 게 기억나서 회사에서 동일 주제로 세미나를 했던 걸 정리하고자 한다._

@@ -140,3 +140,7 @@ div#__next {
 .gsc-tl-line {
   background: none !important;
 }
+
+.gsc-comment-box-preview {
+  border-bottom: none !important;
+}

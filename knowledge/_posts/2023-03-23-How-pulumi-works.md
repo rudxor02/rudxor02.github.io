@@ -1,14 +1,14 @@
 ---
 layout: post
 type: tags
-title: "How pulumi works"
+title: "[Pulumi] How Pulumi Works"
 date: 2023-03-23 23:30:55 +0900
 comments: true
 toc: true
-tags: pulumi infrastructure
+tags: pulumi
 ---
 
-*[여기](https://www.pulumi.com/docs/intro/concepts/how-pulumi-works/#how-does-pulumi-work) 공식 문서 내용이 잘 돼있어 이 내용 중심으로 작성해봤다. 사실 플랫폼 사용자가 적어 구글링 해도 잘 안나와서 공식 문서만 믿고 가야한다. 다행히 aws처럼 공식 문서가 끔찍하게 돼있지는 않아서 볼 만하다.*
+_[여기](https://www.pulumi.com/docs/intro/concepts/how-pulumi-works/#how-does-pulumi-work) 공식 문서 내용이 잘 돼있어 이 내용 중심으로 작성해봤다. 사실 플랫폼 사용자가 적어 구글링 해도 잘 안나와서 공식 문서만 믿고 가야한다. 다행히 aws처럼 공식 문서가 끔찍하게 돼있지는 않아서 볼 만하다._
 
 ## Pulumi란
 
@@ -26,7 +26,7 @@ IaC(Infrastructure as Code) 플랫폼 중 하나이다. sdk가 잘 돼있어 새
 
 ### Language host
 
-`language executor`와 `language runtime`으로 구성되며, 간단히 말하면 `language executor`는 해당 pulumi sdk가 쓰인 언어를 실행(javascript, python, …)시키는 runtime 혹은 binary file이며, `language runtime`은  pulumi sdk 패키지라고 보면 된다. (node: `@pulumi/pulumi`, python: `pulumi`)
+`language executor`와 `language runtime`으로 구성되며, 간단히 말하면 `language executor`는 해당 pulumi sdk가 쓰인 언어를 실행(javascript, python, …)시키는 runtime 혹은 binary file이며, `language runtime`은 pulumi sdk 패키지라고 보면 된다. (node: `@pulumi/pulumi`, python: `pulumi`)
 
 ### Deployment engine
 
@@ -41,23 +41,23 @@ IaC(Infrastructure as Code) 플랫폼 중 하나이다. sdk가 잘 돼있어 새
 ```jsx
 // index.js
 
-import * as pulumi from '@pulumi/pulumi';
-import * as aws from '@pulumi/aws';
+import * as pulumi from "@pulumi/pulumi";
+import * as aws from "@pulumi/aws";
 
-const bucket = new aws.s3.Bucket('test');
+const bucket = new aws.s3.Bucket("test");
 ```
 
 1. pulumi cli가 node `language host` 실행
 2. node `language host`가 프로그램(위 code) 실행
-    1. aws.s3.Bucket 객체를 구성하고 `deployment engine`에 요청을 보내고 프로그램 실행을 계속한다.
-    2. 이때 `new aws.s3.Bucket(...)`은 실제로 instance를 반환하는 게 아니고 생성 요청만 보내는 것임
-    3. `language host`는 계속해서 코드를 실행하게 되고 다른 자원들에 관한 요청을 동시에 (비동기적으로) 보내게 됨
+   1. aws.s3.Bucket 객체를 구성하고 `deployment engine`에 요청을 보내고 프로그램 실행을 계속한다.
+   2. 이때 `new aws.s3.Bucket(...)`은 실제로 instance를 반환하는 게 아니고 생성 요청만 보내는 것임
+   3. `language host`는 계속해서 코드를 실행하게 되고 다른 자원들에 관한 요청을 동시에 (비동기적으로) 보내게 됨
 3. `deployment engine`은 요청을 받아서
-    1. `pulumi up` 을 실행했을 때 리소스들의 `state`가 last `state`와 바뀌지 않았으면 딱히 하는 일이 없다. 이전과 다른 사항이 있어야만 동작한다.
-    2. 위 코드를 처음 실행하는 경우 `state`도, 실제 resource도 새로 create한다.
-        1. 가능한 동작은 create, update, replace, delete 정도이며, replace는 기본적으로 down time을 없게 하기 위해서 새로운 리소스를 create하고 그 다음 원래 있던 리소스를 delete한다.
-    3. 이때 `deployment engine`은 aws에 직접 요청을 보내는 게 아니라 aws `resource provider` 안에 있는 aws `resource plugin`에 요청을 하게 되고, 이는 요청을 수행하기 위해 aws sdk를 사용한다.
-    4. create 작업을 마치면 `state` file에 기록
+   1. `pulumi up` 을 실행했을 때 리소스들의 `state`가 last `state`와 바뀌지 않았으면 딱히 하는 일이 없다. 이전과 다른 사항이 있어야만 동작한다.
+   2. 위 코드를 처음 실행하는 경우 `state`도, 실제 resource도 새로 create한다.
+      1. 가능한 동작은 create, update, replace, delete 정도이며, replace는 기본적으로 down time을 없게 하기 위해서 새로운 리소스를 create하고 그 다음 원래 있던 리소스를 delete한다.
+   3. 이때 `deployment engine`은 aws에 직접 요청을 보내는 게 아니라 aws `resource provider` 안에 있는 aws `resource plugin`에 요청을 하게 되고, 이는 요청을 수행하기 위해 aws sdk를 사용한다.
+   4. create 작업을 마치면 `state` file에 기록
 4. node `language host` 종료
 5. `deployment engine`, `resource provider` 종료
 
