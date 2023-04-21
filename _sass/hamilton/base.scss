@@ -205,8 +205,8 @@ ul.task-list {
   padding-left: $spacing-unit / 2;
   // width: calc(100% - 72px);
 
-  @media (hover: hover) and (pointer: fine) {
-    // width: 1500px;
+  @media (hover: hover) and (pointer: fine) and (min-width: 1800px) {
+    width: 1500px !important;
   }
 
   @media screen and (min-width: $on-large) {
