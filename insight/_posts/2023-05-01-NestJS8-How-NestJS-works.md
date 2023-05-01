@@ -9,7 +9,7 @@ tags: nestjs oop
 ---
 
 
-자 드디어 마지막 편이다! 지금까지 알아온 것들을 바탕으로 Nest container가 어떻게 DI와 IoC를 적용하는 지 살펴보자. 정말정말 복잡하고 글도 길고 코드도 필자가 보고싶었던 부분만 본 거고 모든 내용이 필자의 뇌피셜이고  아 이런게 있구나 하는 정도로만 봐주길 바란다. 구조를 보여주는 사진도 추상적으로 마음대로 그린 것이다. ***진짜 뇌피셜 주의***
+지금까지 알아온 것들을 바탕으로 Nest container가 어떻게 DI와 IoC를 적용하는 지 살펴보자. 정말정말 복잡하고 글도 길고 코드도 필자가 보고싶었던 부분만 본 거고 모든 내용이 필자의 뇌피셜이고  아 이런게 있구나 하는 정도로만 봐주길 바란다. 구조를 보여주는 사진도 추상적으로 마음대로 그린 것이다. ***뇌피셜 주의***
 
 ## NestJS Architecture
 
@@ -79,7 +79,7 @@ tags: nestjs oop
 
 ## Point of view
 
-위 그림들은 필자가 전체적인 구조만 파악하기 위해 코드를 대충대충 본 부분이고, 보면서 재밌었던 부분들을 소개하고자 한다.
+위 그림들은 전체적인 구조만 파악하기 위해 코드를 대충대충 본 부분이고, 보면서 재밌었던 부분들을 소개하고자 한다.
 
 ### never type
 
@@ -272,8 +272,6 @@ export class Injector {
 질문을 *module을 없애버리고 provider를 한 번 선언하면 아무데서나 그걸 사용할 수 있게 하면 안되는 걸까* 로 바꿔보자.
 
 ### why module scope
-
-***뇌피셜 주의***
 
 application의 규모가 커지면 circular dependency가 생길 수 있다. 그걸 해결하려면 정말 복잡할 것이다. circular dependency를 nest doc에서도 언급하고 있고 이를 해결할 방법을 제안했지만, 최후의 수단으로 쓰라는 말투로 얘기하고 있다. 결국 DI는 circular dependency를 푸는 게 중요한 목적 중 하나이다. [[참고]](https://docs.nestjs.com/fundamentals/circular-dependency)
 
