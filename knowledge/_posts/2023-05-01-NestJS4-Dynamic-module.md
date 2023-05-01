@@ -46,9 +46,9 @@ provider wrapper의 경우처럼 module도 dynamic module로 사용할 때에 �
 }
 ```
 
-위와 같이 사용하면 3편에서 봤던 `Module` 데코레이터를 붙인 `PlantModule`과 동일하다. 
+위와 같이 사용하면 3편에서 봤던 `Module` 데코레이터를 붙인 `PlantModule`과 동일하게 동작한다. (그러나 static module이 아니라 dynamic module로 인식될 것이다)
 
-근데 아까 module레벨에서 factory provider처럼 dynamic하게 설정할 수 있어야 한다고 했는데, 그러러면 module 클래스의 static 메소드로 factory option을 전달하고, factory provider에 다시 전달하면 된다. 코드로 살펴보자.
+근데 아까 module레벨에서 factory provider처럼 dynamic하게 설정할 수 있어야 한다고 했는데, 그러러면 module 클래스의 static 메소드로 factory option을 전달하고, factory provider에 다시 전달하면 된다. 코드로 살펴보자. [[3편 코드 참고]](/knowledge/2023/05/01/NestJS3-Custom-provider.html#usefactory)
 
 ```tsx
 import {
@@ -119,9 +119,9 @@ import { ConfigModule } from '@nestjs/config';
 ConfigModule.forRoot({ envFilePath: './config/.env' })
 ```
 
-이처럼 `forRoot`를 사용하면 `ConfigModule`이 해당 path에서 환경변수를 가져온다. 
+이처럼 `forRoot`를 사용하면 `ConfigModule`이 해당 path에서 환경변수를 가져온다.
 
-`forRoot`, `create` 같은 static 메소드 이름은 그냥 의미상 붙인 이름일 뿐이고, 직접 구현한다면 `DynamicModule`만 반환하면 어느것이든 상관없다. 다만 이름에는 어느 정도 표준이 존재하는데, `register`, `forRoot`, `forFeature`를 정도가 있다. (참고로 `registerAsync`, `forRootAsync`, `forFeatureAsync`는 `Promise<DynamicModule>`을 반환한다. 비동기적으로 동작한다는 의미에서 뒤에 Async를 붙인다.)
+`forRoot`, `create` 같은 static 메소드 이름은 그냥 의미상 붙인 이름일 뿐이고, 직접 구현한다면 `DynamicModule`만 반환하면 어느것이든 상관없다. 다만 이름에는 어느 정도 표준이 존재하는데, `register`, `forRoot`, `forFeature` 정도가 있다. (참고로 `registerAsync`, `forRootAsync`, `forFeatureAsync`는 `Promise<DynamicModule>`을 반환한다. 비동기적으로 동작한다는 의미에서 뒤에 Async를 붙인다.)
 
 ### register
 
@@ -140,13 +140,13 @@ class SomeModule{}
 class AnotherModule{}
 ```
 
-근데 여기서 provider token(예를 들면 `provide: CatService`)을 사용할때처럼 `module: CatModule`이 `CatModule.forRoot`의 반환값에 포함돼있으므로 *`import: [ CatModule ]` 하면 안되는걸까* 라는 생각이 들 것이다. 안 된다. 방금 말한 것은 static module로 인식되어 module token이 다르게 생성되기 때문이다. 
+근데 여기서 provider token(예를 들면 `provide: CatService`)을 사용할때처럼 `module: CatModule`이 `CatModule.forRoot`의 반환값에 포함돼있으므로 *`import: [ CatModule ]` 하면 안되는걸까* 라는 생각이 들 것이다. 안 된다. 방금 말한 것은 static module로 인식되어 module token이 다르게 생성되기 때문이다.
 
-참고로 같은 클래스에서 나온 dynamic module이라도 metadata가 다르면 module token이 다르게 생성된다. metadata 정보가 포함된 string을 hashing한 값이 token이 되기 때문이다. 그럼 `module: CatModule` 이건 왜해주는거냐는 생각이 들 것인데 이건 token을 위한 게 아니라 다른걸 위한 것이다. [[7편 참고]](/insight/2023/05/01/NestJS7-How-tokens-are-managed.html#how-tokens-are-managed-1) *방금 말한 의문이 1편부터 8편까지의 모든 내용을 알아보게 된 계기다…*
+참고로 같은 클래스에서 나온 dynamic module이라도 metadata가 다르면 module token이 다르게 생성된다. metadata 정보가 포함된 string을 hashing한 값이 token이 되기 때문이다. 그럼 `module: CatModule` 이건 왜해주는거냐는 생각이 들 것인데 이건 token을 위한 게 아니라 다른걸 위한 것이다. [[7편 참고]](/insight/2023/05/01/NestJS7-How-tokens-are-managed.html#how-tokens-are-managed-1) *방금 말한 의문이 1편부터 8편까지의 모든 내용을 알아보게 된 계기다*
 
 ### forRoot
 
-`forRoot`는 말 그대로 해당 모듈이 dynamic module로서 한 번 설정되고, 그 설정이 다른 곳에서 여러번 쓰일 일이 있을 때에 사용한다. 제대로 이해하려면 `forFeature`와 같이 봐야 한다.
+`forRoot`는 해당 모듈이 dynamic module로서 한 번 설정되고, 그 설정이 다른 곳에서 여러번 쓰일 일이 있을 때에 사용한다. 제대로 이해하려면 `forFeature`와 같이 봐야 한다.
 
 ### forFeature
 
@@ -184,13 +184,13 @@ class CatModule {}
 class DogModule {}
 ```
 
-module에서 `TypeOrmModule.forFeature([ Cat ])`을 import하면 그 module에 `Cat` entity가 저장된 테이블에 접근할 수 있게 해주는 provider가 주입된다. 그 provider가 뭔지, service는 그걸 어떻게 사용하는 지 등의 자세한 내용은 공식문서 참조 바란다. [[링크]](https://docs.nestjs.com/techniques/database#repository-pattern)
+module에서 `TypeOrmModule.forFeature([ Cat ])`을 import하면 그 module에 `Cat` entity가 저장된 테이블에 접근할 수 있게 해주는 provider가 주입된다. 그 provider가 뭔지, service는 그걸 어떻게 사용하는 지 등의 자세한 내용은 공식문서 참고 바란다. [[링크]](https://docs.nestjs.com/techniques/database#repository-pattern)
 
 `CatService`는 `Cat` entity가 저장된 테이블에 접근해야 하고, `DogService`는 `Dog` entity가 저장된 테이블에 접근해야 한다고 하자. 아까처럼 `register`를 그대로 가져와서 똑같은 걸 여러 번 import시키는 것도 가능은 하겠지만 비효율적이다. 코드도 길어지고 (module에 넣어줄 때마다 일일이 db host, username 등을 명시해 줘야 한다) 서비스에서 필요없는 테이블까지 접근할 수 있기 때문이다.
 
 이 문제점은 db 설정만을 위한 `forRoot`를 따로 두고, import만을 위한 `forFeature`를 따로 두게 되면 해결된다. 이때 `forFeature`는 `forRoot`의 설정값으로 생성한 module을 사용자가 바라는 기능에 맞게 살짝 바꿔서 가져오는 역할을 한다.
 
-이전 편에서 봤던 코드가 이해될 것이다. [[3편 참고]](/knowledge/2023/05/01/NestJS3-Custom-provider.html#example)
+이전 편에서 봤던 코드가 이해될 것이다. [[3편 코드 참고]](/knowledge/2023/05/01/NestJS3-Custom-provider.html#example)
 
 ```tsx
 import { ConfigModule } from '@nestjs/config';
@@ -253,14 +253,14 @@ export class TypeOrmModule {
     };
   }
 
-	...
+ ...
 
 }
 ```
 
-저기 `createTypeOrmProviders`에 `entities`를 전달해주면 해당 entity에 접근할 수 있는 `providers`를 가져와 export해주는 dynamic module을 반환하는 걸 볼 수 있다. 
+저기 `createTypeOrmProviders`에 `entities`를 전달해주면 해당 entity에 접근할 수 있는 `providers`를 가져와 export해주는 dynamic module을 반환하는 걸 볼 수 있다.
 
-다음 코드도 형식만 보자. *사실 필자도 자세히 안봤다.* `useFactory`를 사용해서 provider를 동적으로 생성하는 것을 볼 수 있다. 
+다음 코드도 형식만 보자. `useFactory`를 사용해서 provider를 동적으로 생성하는 것을 볼 수 있다.
 
 ```tsx
 // lib/typeorm.providers.ts

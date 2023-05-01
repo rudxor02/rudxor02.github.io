@@ -59,7 +59,7 @@ export type InjectionToken =
   | Function;
 ```
 
-마지막 2개는 어느 경우에 쓰이는지 잘 모르겠다 ㅎㅎ;; 아무튼 3번째 타입으로 Type<any>가 들어가는데,
+마지막 2개는 어느 경우에 쓰이는지 잘 모르겠다 ㅎㅎ;; 아무튼 3번째 타입으로 `Type<any>`가 들어가는데,
 
 ```tsx
 // packages/common/interfaces/type.interface.ts
@@ -80,9 +80,9 @@ export interface Type<T = any> extends Function {
 
 클래스 그 자체가 provider가 되면서 token도 되는 것이다.
 
-dependency를 주입받는 쪽에서 Inject 데코레이터를 안붙여줬을 때도 똑같이 그 parameter에 타입으로 할당된 클래스 그 자체를 token으로 갖는 인스턴스를 주입받는다.
+dependency를 주입받는 쪽에서 `Inject` 데코레이터를 안붙여줬을 때도 똑같이 그 parameter에 타입으로 할당된 클래스 그 자체를 token으로 갖는 인스턴스를 주입받는다.
 
-요약하자면 클래스에서 dependency를 주입받을 때 Inject 데코레이터에 넣어준 token과 provider wrapper에서 선언한 token이 일치하는 인스턴스를 주입받게 된다.
+요약하자면 클래스에서 dependency를 주입받을 때 `Inject` 데코레이터에 넣어준 token과 provider wrapper에서 선언한 token이 일치하는 인스턴스를 주입받게 된다.
 
 ## Module token
 
@@ -108,9 +108,9 @@ class AnimalModule {}
 class PlantModule {}
 ```
 
-`FlowerService`에서 `CatService`를 사용하기 위해서 `PlantModule`이 `AnimalModule`을 import하는 모습이다. 이때 AnimalModule이 module token(정확히는 ``${randomString}_${*moduleName}``* 의 hash string이 token이다)과 함께 ‘모듈 저장소’에 함께 등록되고, PlantModule에서 AnimalModule을 찾을 때에 이 token을 사용한다.
+`FlowerService`에서 `CatService`를 사용하기 위해서 `PlantModule`이 `AnimalModule`을 import하는 모습이다. 이때 `AnimalModule`이 module token(정확히는 `${randomString}_${moduleName}` 의 hash string이 token이다)과 함께 **모듈 저장소**에 함께 등록되고, `PlantModule`에서 `AnimalModule`을 찾을 때에 이 token을 사용한다.
 
-일반적으로 NestJS 사용자는 module token에 접근할 수 없는데, *왜 provider token과 다르게 module token은 접근할 수 없는가*는 결국 *왜 dependency가 module 단위로 관리되느냐*라는 말과 같다. 이것도 왜 그런지 나름의 이유를 생각해봤는데 8편에서 살펴보도록 하자. [[8편 참고]](/insight/2023/05/01/NestJS8-How-NestJS-works.html#why-module-token-is-not-accessible)
+일반적으로 NestJS 사용자는 module token에 접근할 수 없는데, *왜 provider token과 다르게 module token은 접근할 수 없는가*는 결국 *왜 dependency가 module 단위로 관리되느냐*라는 말과 같다. 이것도 왜 그런지 나름의 이유를 생각해봤는데 나중에 8편에서 살펴보도록 하자. [[8편 참고]](/insight/2023/05/01/NestJS8-How-NestJS-works.html#why-module-token-is-not-accessible)
 
 ## Reference
 

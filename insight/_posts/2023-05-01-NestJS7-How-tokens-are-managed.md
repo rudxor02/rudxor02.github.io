@@ -9,17 +9,17 @@ tags: nestjs
 ---
 
 
-이제 필요한 개념들을 다 알았으니 7편과 8편에서는 이 개념들이 NestJS 소스코드에 어떻게 적용되었는지 알아볼 것이다. 이번 7편에서는 token이 어떻게 관리되는지부터 살펴보자. *뇌피셜 주의*
+이제 필요한 개념들을 다 알았으니 7편과 8편에서는 이 개념들이 NestJS 소스코드에 어떻게 적용되었는지 알아볼 것이다. 이번 7편에서는 token이 어떻게 관리되는지부터 살펴보자. ***뇌피셜 주의***
 
 ## Provider token
 
 ![Module](/assets/images/post/2023-05-01-NestJS7-How-tokens-are-managed-20230501175646.png)
 
-provider token은 `Module` 안에 _provider 안에 (타입은 `Map<InstanceToken, InstanceWrapper>`) 저장된다. `InstanceWrapper`는 provider당 하나씩 생성되며, 이에 token이 생성되어 `InstanceToken`을 key로, `InstanceWrapper`을 value로 Map에 할당된다. 전체적인 구조는 8편 참고바란다.
+provider token은 `Module`의 `_provider` 안에 (타입은 `Map<InstanceToken, InstanceWrapper>`) 저장된다. `InstanceWrapper`는 provider당 하나씩 생성되며, 이에 token이 생성되어 `InstanceToken`을 key로, `InstanceWrapper`을 value로 `Map`에 할당된다. 전체적인 구조는 [8편 참고](/insight/2023/05/01/NestJS8-How-NestJS-works.html#nestjs-architecture)바란다.
 
 ### type
 
-2편에서 언급한 `InstanceToken`과 `Provider`의 type을 다시 살펴보자.
+2편에서 언급한 `InstanceToken`과 `Provider`의 타입을 다시 살펴보자.
 
 ```tsx
 // packages/common/interfaces/modules/injection-token.interface.ts
@@ -120,7 +120,7 @@ export class Module {
 - custom provider가 아니면 그냥 provider 그 자체를 token으로 사용하고(이때 provider는 `Type<any>`)
 - custom provider면 (factory provider를 예시로 가져와봤다.) `provide` 속성에서 지정한 token으로 `InstanceWrapper`에 할당하는 것을 볼 수 있다.
 
-`addProvider`에서 `this._providers`와 `addCustomFactory`에서 `collection`이 `Map<InstanceToken, InstanceWrapper>`이다. (두 변수는 같은걸 가리킨다.)
+`addProvider`의 `this._providers`와 `addCustomFactory`의 `collection`이 `Map<InstanceToken, InstanceWrapper>`이다. (두 변수는 같은걸 가리킨다.)
 
 ## Module token
 
@@ -208,8 +208,8 @@ export class ModuleTokenFactory {
 
 `create`에서 시작해서 대상 module이
 
-- static module이면 (클래스 이름 그대로 사용한 module) `getStaticModuleToken` 안에서 `moduleId`와 `moduleName`을 붙인 것의 hash값이 token이 된다. (이때 `moduleId`는 random string, `moduleName`은 module 클래스 이름)
-- dynamic module이면 `moduleId`와 `moduleName`, `dynamicModuleMetadata`를 한 곳에 모아 통째로 stringify → hash값을 token으로 사용한다. 이렇게 되면 module wrapper에 넣어준 값들 중 하나만 달라져도 다른 token이 할당되어 새로운 instance를 생성한다.
+- static module이면 (클래스 이름 그대로 사용한 module) `getStaticModuleToken` 안에서 `moduleId`와 `moduleName`을 붙인 것의 hash값이 token이 된다. (이때 `moduleId`는 random string, `moduleName`은 클래스 이름)
+- dynamic module이면 `moduleId`와 `moduleName`, `dynamicModuleMetadata`를 한 곳에 모아 통째로 stringify → hash값을 token으로 사용한다. (이때 `moduleName`은  module wrapper에서 `module` 속성에 등록한 클래스 이름) 이렇게 되면 module wrapper에 넣어준 값들 중 하나만 달라져도 다른 token이 할당되어 새로운 module instance를 생성한다.
 
 ## Reference
 

@@ -9,7 +9,7 @@ tags: nestjs typescript
 ---
 
 
-NestJS는 데코레이터와 reflection 기능을 기반으로 동작한다. 서비스로 등록하고 싶은 클래스에 `Injectable` 데코레이터를 달아주고, 모듈로 등록하고 싶은 클래스에 `Module` 데코레이터를 달아줘야만 제대로 동작하기 때문이다.
+NestJS는 데코레이터와 reflection 기능을 기반으로 동작한다. 서비스로 등록하고 싶은 클래스에 `Injectable` 데코레이터를 달아주고, 모듈로 등록하고 싶은 클래스에 `Module` 데코레이터를 달아줘야만 metadata를 클래스에 할당해서 제대로 동작하기 때문이다.
 
 그럼 데코레이터와 reflection이 뭔지, 이들이 어떻게 쓰이는지 살펴보자.
 
@@ -42,11 +42,11 @@ const ParamDec: ParameterDecorator = <T extends { new (...args: any[]): {} }>(
 @ClassDec
 class A {
   constructor(
-    // A, undefined, 0
+    // console: A, undefined, 0
     @ParamDec
     public readonly a: number,
   ) {}
-  // undefined, method, 0
+  // console: undefined, method, 0
   method(@ParamDec asd: number) {}
 }
 
@@ -55,7 +55,7 @@ console.log(new A(3)); // K { a: 3, k: 3 }
 
 `target`은 클래스 그 자체가 매개변수로 넘어오는 것이며, `target`을 그냥 `object` 타입으로 받아버리면 클래스 상속을 못해서 `<T extends { new (...args: any[]): {} }>` 를 붙여봤다. 뜻은 *`T`는 클래스 타입입니다~* 라는 뜻이다.
 
-`ClassDec`에서 또다른 클래스를 반환해주면 instantiate할 때에 반환해준 클래스 `K`로 대체가 되고, `ParamDec`에서 `target`이 내부 메소드 `method`에서는 `undefined`로 나오는데 왜 저러는지는 모르겠다. 중요하지는 않다.
+`ClassDec`에서 또다른 클래스를 반환해주면 instantiate할 때에 반환해준 클래스 `K`로 대체가 되고, `ParamDec`에서 `target`이 내부 메소드 `method`에서는 `undefined`로 나오는데 왜 저러는지는 모르겠다. 사실 이 주제에서는 별로 중요하지는 않다.
 
 ## Reflection
 
@@ -86,16 +86,16 @@ class A {
 console.log(Reflect.getMetadata(PARAMTYPES_METADATA, A)); // [ [ class B ] ]
 ```
 
-`Empty`라는 아무것도 안 하는 데코레이터를 단 이유는 아무 데코레이터라도 달아줘야만 예약된 key를 사용할 수 있기 때문이다. *이거땜에 몇일을 날렸다…*
+`Empty`라는 아무것도 안 하는 데코레이터를 단 이유는 아무 데코레이터라도 달아줘야만 예약된 key를 사용할 수 있기 때문이다. *이거땜에 몇일을 날렸다*
 
 ## In NestJS
 
-그럼 NestJS가 위 2가지 기능을 기반으로 어떻게 동작하는지 짐작할 수 있는데, 요약하자면 다음과 같다. 
+그럼 NestJS가 위 2가지 기능을 기반으로 어떻게 동작하는지 짐작할 수 있는데, 요약하자면 다음과 같다.
 
 1. depedency가 존재하는 클래스*(예를 들면 `DogService`를 필요로 하는 `CatService`)*를 instantiate할 때 constructor parameter type(`DogService`)을 `design:paramtypes` metadata key로 가져온다.
 2. **instance들을 저장하는 어딘가**에서 해당 타입*(`DogService`)*을 가지는 instance*(`DogService instance`)*를 가져와서 해당 클래스*(`CatService`)*를 instantiate한다.
 
-실제 코드에서 어떻게 이걸 구현했는지는 NestJS 마지막편에서 다루도록 하겠다.
+실제 코드에서 어떻게 이걸 구현했는지는 8편에서 다루도록 하겠다. [[8편 참고]](/insight/2023/05/01/NestJS8-How-NestJS-works.html#getting-dependencies-of-class)
 
 ## Reference
 
