@@ -68,7 +68,7 @@ export interface Type<T = any> extends Function {
 }
 ```
 
-쉽게 말해 클래스 그 자체를 가리키는 타입이다. 이때까지 `Module` 데코레이터의 `providers` 옵션에 클래스 이름 그대로 넣어줬던 게 기억날 것이다. 그게 `Type<any>` 타입이다. `providers`에 클래스 이름을 그대로 넣어주게 되면 아래 provider wrapper와 동일한 의미를 가진다.
+클래스 그 자체를 가리키는 타입이다. 이때까지 `Module` 데코레이터의 `providers` 옵션에 클래스 이름 그대로 넣어줬던 게 기억날 것이다. 그게 `Type<any>` 타입이다. `providers`에 클래스 이름을 그대로 넣어주게 되면 아래 provider wrapper와 동일한 의미를 가진다.
 
 ```tsx
 // CatService만 넣어주게 되면 다음과 같은 의미를 가진다.
