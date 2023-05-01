@@ -53,7 +53,7 @@ export class AppModule {}
 
 ### useClass
 
-이건 우리가 아는 일반적인 provider이다. 2편에서 말했으므로, 따로 더 말하지는 않겠다. 다만 클래스 이름 그대로 쓰지 않고 wrapper로 감싸서 전달하면 dynamic(`useFactory`보다는 아니지만)하게 전달할 수 있다고는 한다.
+이건 우리가 아는 일반적인 provider이다. 다만 클래스 이름 그대로 쓰지 않고 wrapper로 감싸서 전달하면 dynamic(`useFactory`보다는 아니지만)하게 전달할 수 있다고는 한다.
 
 ```tsx
 {
@@ -106,11 +106,11 @@ const catServiceFactoryProvider: FactoryProvider = {
 class CatModule {}
 ```
 
-*예시가 처참해서 정말 죄송합니다*
+
 
 `CatService`를 구성하는 데에 `headLeg`인 `CatServiceOption`이 필요한데, 이게 `CatServiceOptionProvider`라는 다른 곳에서 등록된 provider만이 이를 구성할 수 있는 정보인 `head`와 `leg`를 가지고 있다고 해보자.
 
-그러면 기존의 방식으로는 `CatService`가 `CatServiceOptionProvider`를 다 받아와서 직접 `headLeg`를 만들어야 할 것이다. 근데 `head`와 `leg`만 필요한데 `arm`까지 다 데려와서 `headLeg`를 만드는 게 맞는걸까? 어떻게 보면 집에 리모콘이 어디있는지 찾으려고 시장에 나가계신 어머니를 직접 불러다가 리모콘을 찾게 시키는 것이랑 같은 꼴이다. 그냥 전화해서 어디있는지만 들으면 되는데도 말이다. 만약 필요로 하는 option이 한두개가 아니라고 생각해 보면, 정말 간단한 걸 구성하는 데에도 복잡한 dependency가 생길 것이고, 필요한 것만 주입받지 못하게 된다.
+그러면 기존의 방식으로는 `CatService`가 `CatServiceOptionProvider`를 다 받아와서 직접 `headLeg`를 만들어야 할 것이다. 근데 `head`와 `leg`만 필요한데 `arm`까지 다 데려와서 `headLeg`를 만드는 게 맞는걸까? 간단한 걸 구성하는 데에도 복잡한 dependency가 생길 것이고, 필요한 것만 주입받지 못하게 된다.
 
 공장(factory)의 의미도 뭔가를 찍어낸다는 의미에서 사용된 것이다. 만약 `headLeg`를 구성하는 방식이 코드처럼 `head + leg`가 아니라 `head + leg + leg` 처럼 바뀌어야 된다고 하면, 물건 전체(provider)를 바꾸는 게 아니라 그저 공장에서 부품(option)을 바꾸면 된다. (`option.leg`로 `leg + leg`를 넘겨주면 된다.)
 
