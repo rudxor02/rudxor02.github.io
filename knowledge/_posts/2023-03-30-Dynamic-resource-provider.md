@@ -20,7 +20,7 @@ import * as aws from "@pulumi/aws";
 const testBucket = new aws.s3.Bucket("test-bucket", {});
 ```
 
-_어? bucket 이름을 지정 안 해줬는데 어떻게 생성되는 거지?_ 라고 생각할 수 있는데 `aws.s3.Bucket` 생성자의 2번째 input에 이 글의 마지막에 나올 `bucket`이란 속성을 명시하지 않으면 자동으로 bucket 이름은 `test-bucket-a01b82` 처럼 1번째 input에 무작위 번호를 붙인 이름이 된다. [[링크](https://www.pulumi.com/registry/packages/aws/api-docs/s3/bucket/#bucket_nodejs)]
+_어? bucket 이름을 지정 안 해줬는데 어떻게 생성되는 거지?_ 라고 생각할 수 있는데 `aws.s3.Bucket` 생성자의 2번째 input에 이 글의 마지막에 나올 `bucket`이란 속성을 명시하지 않으면 자동으로 bucket 이름은 `test-bucket-a01b82` 처럼 1번째 input에 무작위 번호를 붙인 이름이 된다. [[링크]](https://www.pulumi.com/registry/packages/aws/api-docs/s3/bucket/#bucket_nodejs)
 
 - `pulumi up` 을 처음 실행하게 되면 `provider`(여기서는 aws provider)는 `deployment engine`으로부터 이 bucket을 `create` 해달라는 요청을 받게 된다. 그러면 bucket을 생성하는 aws api를 코드 내용(이름이나 설정값 등)에 맞게 호출한다.
 - 코드를 바꾸지 않고 또 실행하면 `provider`는 위 bucket이 이전 상태와 달라진 것은 없는 지 `diff`를 확인하고, 달라진 게 없음을 확인하고 아무것도 하지 않는다.
