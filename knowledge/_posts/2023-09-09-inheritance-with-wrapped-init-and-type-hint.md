@@ -2,15 +2,17 @@
 layout: post
 type: tags
 title: "[Python] Inheritance with wrapped __init__ and type hint"
-date: 2023-09-09 15:00:00 +0900
+date: 2023-09-09 15:00:01 +0900
 comments: true
 toc: true
 tags: python
 ---
 
+*우선 vscode가 python 타입을 어떻게 아는지부터 알아야 한다.*
+
 ## Mypy
 
-우선 vscode가 python 타입을 어떻게 아는지부터 알아야 한다. 기본적으로 타입을 명시해야 하는 언어가 아니다 보니 외부 패키지를 사용하는데, vscode를 깔고 python 확장을 설치하면 자동으로 타입 검사를 해주는 Pylance가 설치된다.
+python은 기본적으로 타입을 명시해야 하는 언어가 아니다 보니 외부 패키지를 사용하는데, vscode를 깔고 python 확장을 설치하면 자동으로 타입 검사를 해주는 Pylance가 설치된다.
 
 ![Untitled](/assets/images/post/2023-09-09-inheritance-with-wrapped-init-and-type-hint-20230909153116.png)
 
