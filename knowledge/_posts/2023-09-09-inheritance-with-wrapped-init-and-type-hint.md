@@ -5,7 +5,7 @@ title: "[Python] Inheritance with wrapped __init__ and type hint"
 date: 2023-09-09 15:00:01 +0900
 comments: true
 toc: true
-tags: python
+tags: python oop
 ---
 
 *우선 vscode가 python 타입을 어떻게 아는지부터 알아야 한다.*

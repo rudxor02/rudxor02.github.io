@@ -5,7 +5,7 @@ title: "[Python] Inheritance with wrapped __init__"
 date: 2023-09-09 15:00:00 +0900
 comments: true
 toc: true
-tags: python
+tags: python oop
 ---
 
 *원래 python을 혐오하는 사람 중 한 명이었으나 회사에서 3개월 넘게 쓰면서 ~~미운~~정이 들기도 했고 이 주제를 공부하면서 강력한 OOP 언어가 될 수 있다는 것을 알게 되었다. 우선 찾아보게 된 배경 + 앞으로 나올 글의 흐름은 다음과 같다.*
