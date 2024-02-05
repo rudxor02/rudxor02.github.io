@@ -1,6 +1,6 @@
 # rudxor02.github.io
 
-run
+# run
 
 ```shell
 jekyll serve
