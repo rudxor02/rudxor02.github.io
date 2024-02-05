@@ -86,7 +86,7 @@ class A {
 console.log(Reflect.getMetadata(PARAMTYPES_METADATA, A)); // [ [ class B ] ]
 ```
 
-`Empty`라는 아무것도 안 하는 데코레이터를 단 이유는 아무 데코레이터라도 달아줘야만 예약된 key를 사용할 수 있기 때문이다. *이거땜에 몇일을 날렸다*
+`Empty`라는 아무것도 안 하는 데코레이터를 단 이유는 아무 데코레이터라도 달아줘야만 예약된 key를 사용할 수 있기 때문이다. *이거땜에 며칠을 날렸다*
 
 ## In NestJS
 

@@ -299,7 +299,7 @@ def standard():
 
 ![Untitled](/assets/images/post/2023-09-09-inheritance-with-wrapped-init-20230909151854.png)
 
-*어… 코드 똑같은데 내꺼는 왜 안되지…* 라는 의문 속에 몇일을 인터넷만 뒤졌던 것 같다. 글이 너무 길어졌으니 [다음 포스팅](/knowledge/2023/09/09/inheritance-with-wrapped-init-and-type-hint)에서 그 이유를 알아보도록 하겠다
+*어… 코드 똑같은데 내꺼는 왜 안되지…* 라는 의문 속에 며칠을 인터넷만 뒤졌던 것 같다. 글이 너무 길어졌으니 [다음 포스팅](/knowledge/2023/09/09/inheritance-with-wrapped-init-and-type-hint)에서 그 이유를 알아보도록 하겠다
 
 ## References
 
