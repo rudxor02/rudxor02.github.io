@@ -37,7 +37,7 @@ plugins:
   - jekyll-paginate
 # theme: jekyll-theme-hamilton
 # disqus: rudxor02-github-io
-google_analytics: G-Q4PQJXGQB8
+google_analytics: G-W9CDBG5Y54
 remote_theme: ngzhio/jekyll-theme-hamilton
 author: rudxor02
 avatar: /assets/images/dev-jeans-hood.png
