@@ -10,7 +10,7 @@ tags: aws vpc vpc-peering docker
 
 오늘은 1~2주 전에 docker + vpn을 사용하면서 겪었던 네트워크 이슈에 대해서 잊기 전에 써보려고 한다.
 
-# 문제 상황
+## 문제 상황
 
 1. aws에서, vpc1과 vpc2 사이에 vpc peering을 해놓은 상태이다.
 2. vpc1에 ec2로 서버 프로그램을 하나 띄웠고,
@@ -24,7 +24,7 @@ tags: aws vpc vpc-peering docker
 
 아무리 생각해도 ec2의 security group도 vpc2 대역을 허가하고 있고, 5.a에서 보다시피 잘 되는데 방금 띄운 ec2만 안된다는 게 너무너무 이상했다. vpc peering도, sg도 정상 작동한다는 뜻이었고, 이 밖에 timeout 에러가 날 이유가 전혀 떠오르지 않았기 때문이다. (timeout error는 주로 ip 주소로 호스트를 못 찾을 때 혹은 포트가 방화벽에 막혀 있을 때 발생하기 때문에…)
 
-# 해결
+## 해결
 
 진~짜 진짜 이상해서 몇 시간 동안 오만 데 다 뒤져봤다. 결국 route table을 봐야겠다 싶어서 해당 ec2에 접속해서 아래 명령어를 쳐봤더니…
 
@@ -57,6 +57,6 @@ default via 172.31.0.1 dev enX0 proto dhcp src 172.31.3.106 metric 512
 ...
 ```
 
-# 결론
+## 결론
 
 private ip 대역을 사용할 땐 항상 다른 부분이랑 겹치는 게 없는 지 조심하자…
