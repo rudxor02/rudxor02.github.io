@@ -3,5 +3,5 @@
 # run
 
 ```shell
-jekyll serve
+bundle exec jekyll serve
 ```
