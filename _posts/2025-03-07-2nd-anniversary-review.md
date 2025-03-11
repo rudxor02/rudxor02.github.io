@@ -1,11 +1,11 @@
 ---
 layout: post
 type: tags
-title: "[Review] 2년차"
+title: "[Retro] 2년차"
 date: 2025-03-07 14:00:00 +0900
 comments: true
 toc: true
-tags: review
+tags: retro
 ---
 
 어느덧 내가 개발자가 된 지 2년이 지났다. 시간이 어떻게 이렇게 빠르나 싶다. 1년 동안 뭐했는지, 요즘 나의 근황과 커리어에 대한 고민을 적어 보려 한다.

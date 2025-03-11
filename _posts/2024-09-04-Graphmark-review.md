@@ -1,11 +1,11 @@
 ---
 layout: post
 type: tags
-title: "[Review] 두 달만에 혼자 서비스 출시하고 접은 후기"
+title: "[Retro] 두 달만에 혼자 서비스 출시하고 접은 후기"
 date: 2024-09-04 15:00:00 +0900
 comments: true
 toc: true
-tags: review
+tags: retro
 ---
 
 사실 Graphmark 프로젝트 끝난지는 2달이 지났지만, 재충전 핑계로 이제야 회고글을 작성한다.

@@ -1,11 +1,11 @@
 ---
 layout: post
 type: tags
-title: "[Review] 1년차"
+title: "[Retro] 1년차"
 date: 2024-02-05 21:00:00 +0900
 comments: true
 toc: true
-tags: review
+tags: retro
 ---
 
 2월 6일부로 필자도 드디어 2년차 개발자가 되었다. 2, 3주년은 몰라도 1주년은 좀 기념할 만한 것 같아 ㅎㅎ… 응애응애에서 응애가 된 기념으로 1년 동안 개발자로서의 나의 삶을 돌아보려 한다.
