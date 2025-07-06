@@ -1,0 +1,8 @@
+# 301 Redirect from old domain to new domain
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^rudxor02\.github\.io$ [NC]
+RewriteRule ^(.*)$ https://blog.rudxor.com/$1 [R=301,L]
+
+# Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301] 
