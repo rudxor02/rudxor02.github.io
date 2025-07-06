@@ -1,0 +1,6 @@
+# Redirect from old domain to new domain
+# Redirect all traffic from rudxor02.github.io to blog.rudxor.com
+/* https://blog.rudxor.com/:splat 301!
+
+# Specific redirects if needed
+# /old-page /new-page 301 
