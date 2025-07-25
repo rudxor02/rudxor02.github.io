@@ -5,7 +5,7 @@ title: "LLM이 있기 때문에 가능해진 일"
 date: 2025-07-13 14:00:00 +0900
 comments: true
 toc: true
-tags: review
+tags:
 ---
 
 오늘은 LLM이 있기에 가능해진 일 중 하나를 얘기해보려 한다. 바로 리버스 엔지니어링이다. 범위를 더 좁혀 말하자면 llm을 사용해서 google scholar 크롬 익스텐션 코드를 리버스 엔지니어링한 경험을 공유해보고자 한다.
