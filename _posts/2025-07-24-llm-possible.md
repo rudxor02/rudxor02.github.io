@@ -2,7 +2,7 @@
 layout: post
 type: tags
 title: "LLM이 있기 때문에 가능해진 일"
-date: 2025-07-13 14:00:00 +0900
+date: 2025-07-24 14:00:00 +0900
 comments: true
 toc: true
 tags:
