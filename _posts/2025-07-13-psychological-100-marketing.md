@@ -6,6 +6,7 @@ date: 2025-07-13 14:00:00 +0900
 comments: true
 toc: true
 tags: review
+rating: 2
 ---
 
 [무조건 팔리는 심리 마케팅 100가지 기술](https://www.yes24.com/product/goods/118485416)을 읽고 든 생각이다.

@@ -19,7 +19,7 @@ layout: default
       <li>
         <h2>
           <a href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
+            {{ post.title | escape }}{% if post.rating %} <span class="post-rating-stars">({% assign rating_num = post.rating | plus: 0 %}{% for i in (1..5) %}{% if i <= rating_num %}★{% else %}☆{% endif %}{% endfor %})</span>{% endif %}
           </a>
         </h2>
         <p class="post-meta">
@@ -35,6 +35,20 @@ layout: default
         {%- if post.show_excerpts != false -%}
           <div class="post-excerpt">{{ post.excerpt | strip_html }}</div>
         {%- endif -%}
+        {% if post.tags.size > 0 %}
+          <div class="post-meta post-meta-main-page">
+            <i class="fas fa-tags"></i>
+            <ul class="post-taxonomies post-tags">
+              {% assign tags = post.tags | sort %}
+              {% for tag in tags %}
+                <li class="post-tag">
+                  {% assign slugified_tag = tag | slugify %}
+                  <a href="{{ '/tags/#:tag' | replace: ':tag', slugified_tag | relative_url }}">{{ slugified_tag }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
       </li>
       {%- endfor -%}
     </ul>

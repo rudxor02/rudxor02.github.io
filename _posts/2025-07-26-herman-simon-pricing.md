@@ -6,6 +6,7 @@ date: 2025-07-26 14:00:00 +0900
 comments: true
 toc: true
 tags: review
+rating: 3
 ---
 
 [헤르만 지몬 프라이싱](https://www.yes24.com/product/goods/52894108)을 읽고 든 생각이다.

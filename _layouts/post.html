@@ -28,9 +28,27 @@ layout: default
       {%- endif -%}
     </p>
 
+    {% if page.tags.size > 0 %}
+      <div class="post-meta">
+        <i class="fas fa-tags"></i>
+        <ul class="post-taxonomies post-tags">
+          {% assign tags = page.tags | sort %}
+          {% for tag in tags %}
+            <li class="post-tag">
+              {% assign slugified_tag = tag | slugify %}
+              <a href="{{ '/tags/#:tag' | replace: ':tag', slugified_tag | relative_url }}">{{ slugified_tag }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
+    {% if page.rating %}
+      {% include book-rating.html %}
+    {% endif %}
     {{ content }}
   </div>
 

@@ -6,6 +6,7 @@ date: 2025-08-14 14:00:00 +0900
 comments: true
 toc: true
 tags: review
+rating: 1
 ---
 
 [세스 고딘 이것이 마케팅이다](https://www.yes24.com/product/goods/71388571)를 읽고 든 생각이다

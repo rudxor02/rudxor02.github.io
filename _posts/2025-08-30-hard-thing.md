@@ -6,6 +6,7 @@ date: 2025-08-30 14:00:00 +0900
 comments: true
 toc: true
 tags: review
+rating: 3
 ---
 
 책 [하드씽](https://www.yes24.com/product/goods/97951991)을 읽고 든 생각이다
