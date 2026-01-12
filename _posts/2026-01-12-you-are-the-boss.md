@@ -1,7 +1,7 @@
 ---
 layout: post
 type: tags
-title: "[Review] 리더의 멘탈은 달라야 한디"
+title: "[Review] 리더의 멘탈은 달라야 한다"
 date: 2026-01-12 14:00:00 +0900
 comments: true
 toc: true
